@@ -1,0 +1,28 @@
+import * as yup from "yup";
+
+export const schema = yup
+  .object({
+    name: yup.string().required("Campo obrigatório!"),
+    email: yup
+      .string()
+      .required("Campo obrigatório!")
+      .email("Favor inserir e-mail válido!"),
+    password: yup
+      .string()
+      .matches(/.{8,}/, "Deve conter no mínimo 8 caracteres")
+      .matches(/[a-z]/, "Deve conter ao menos 1 letra")
+      .matches(/(\d)/, "Deve conter ao menos 1 número")
+      .matches(/(\W|_)/, "Deve conter no mínimo 1 caracter especial")
+      .required("Campo obrigatório!"),
+    confirmPassword: yup
+      .string()
+      .oneOf(
+        [yup.ref("password")],
+        "Confirmação de senha deve ser igual a senha"
+      )
+      .required("Confirmação de senha é obrigatória"),
+    bio: yup.string().required("Campo obrigatório!"),
+    contact: yup.string().required("Campo obrigatório!"),
+    course_module: yup.string().required("Campo obrigatório!"),
+  })
+  .required();
