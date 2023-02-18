@@ -9,13 +9,15 @@ export const StyledMain = styled.main`
 
   .boxMenuUl {
     width: 100%;
-    max-width: 370px;
+    max-width: 780px;
     height: 72px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0;
 
-    button {
+    .btnAddTech {
       width: 32.49px;
       height: 42px;
       background-color: var(--grey-3);
@@ -27,10 +29,10 @@ export const StyledMain = styled.main`
 
   .containerUl {
     width: 100%;
-    max-width: 370px;
     padding: 34px 18px 34px 18px;
     border-radius: 4px;
     background-color: var(--grey-3);
+    margin-top: 0;
 
     li {
       width: 100%;
@@ -40,33 +42,54 @@ export const StyledMain = styled.main`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12.18px;
+      /* padding: 12.18px; */
       margin-bottom: 16px;
 
       p {
         font-size: var(--title3);
         font-weight: 700;
         color: var(--grey-0);
+        margin-top: 0;
       }
 
       span {
         font-size: var(--headline);
         color: var(--grey-1);
       }
+
+      .btnEditTech {
+        width: 100%;
+        height: 49px;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12.18px;
+      }
+
+      .activeBtnEdit {
+        background-color: var(--grey-2);
+      }
     }
   }
 
   @media (min-width: 769px) {
     width: 54.16%;
-
+    max-width: 780px;
     .boxMenuUl {
       min-width: 54.16%;
-      max-width: 780px;
     }
 
     .containerUl {
       width: 100%;
-      max-width: 780px;
+
+      li {
+        .btnEditTech {
+          padding: 13px 22.22px 13px 22.22px;
+        }
+      }
     }
   }
 `;

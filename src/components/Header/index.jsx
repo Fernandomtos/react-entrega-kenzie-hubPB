@@ -1,13 +1,17 @@
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 import { StyledHeader } from "./style";
 
-export const Header = ({ profileUser }) => {
+export const Header = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <StyledHeader>
       <div>
         <h1>
-          Olá, <span>{profileUser.name}</span>
+          Olá, <span>{user.name}</span>
         </h1>
-        <p>{profileUser.course_module}</p>
+        <p>{user.course_module}</p>
       </div>
     </StyledHeader>
   );

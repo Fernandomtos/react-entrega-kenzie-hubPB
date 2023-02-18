@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const StyledNav = styled.nav`
   width: 100%;
-  height: auto;
-  max-width: 370px;
+  height: 73px;
   margin-left: 3.2%;
   margin-right: 3.2%;
   display: flex;
@@ -22,6 +21,8 @@ export const StyledNav = styled.nav`
   }
 
   @media (min-width: 769px) {
-    min-width: 54.16%;
+    width: 54.16%;
+    max-width: 780px;
+    height: 72px;
   }
 `;

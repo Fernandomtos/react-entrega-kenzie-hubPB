@@ -39,7 +39,22 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     font-family: "Inter", sans-serif;
+
+    .imgLoading {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
   }
+
+  
 
   label {
     font-size: var(--headline);

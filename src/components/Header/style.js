@@ -12,7 +12,6 @@ export const StyledHeader = styled.header`
   div {
     width: 100%;
     height: 100%;
-    max-width: 370px;
     margin-left: 3.2%;
     margin-right: 3.2%;
     display: flex;
@@ -37,10 +36,12 @@ export const StyledHeader = styled.header`
 
   @media (min-width: 769px) {
     div {
-      min-width: 54.16%;
+      height: 118px;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      width: 54.16%;
+      max-width: 780px;
     }
   }
 `;

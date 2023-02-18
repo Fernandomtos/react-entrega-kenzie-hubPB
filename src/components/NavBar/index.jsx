@@ -1,17 +1,26 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../providers/UserContext";
 import { StyledNav } from "./style";
 
 export const NavBar = ({ children }) => {
-  const navigate = useNavigate();
+  const { logout } = useContext(UserContext);
+
+  //const navigate = useNavigate();
+
   const voltar = () => {
     navigate(-1);
-    window.localStorage.clear();
   };
 
   return (
     <StyledNav>
       <img src="./img/Logo.svg" alt="Logo da empresa" />
-      <button onClick={voltar}>{children}</button>
+      <button
+        type="button"
+        onClick={children === "voltar" ? () => voltar() : () => logout()}
+      >
+        {children}
+      </button>
     </StyledNav>
   );
 };

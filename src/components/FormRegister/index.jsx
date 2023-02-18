@@ -1,32 +1,23 @@
 import { StyledDiv } from "./style";
-import { toast } from "react-toastify";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Input } from "../Input";
+import { InputSelect } from "../InputSelect";
+import { BtnSubmit } from "../BtnSubmit";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 import { schema } from "./validator";
 import { useForm } from "react-hook-form";
-import { Input } from "../Input";
-import { BtnSubmit } from "../BtnSubmit";
-import { InputSelect } from "../InputSelect";
-import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const FormRegister = () => {
+  const { createUser } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
-
-  const navigate = useNavigate();
-
-  const createUser = async (data) => {
-    try {
-      const response = await api.post("/users", data);
-      toast.success("Usuário cadastrado com sucesso!");
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   return (
     <>
@@ -95,7 +86,7 @@ export const FormRegister = () => {
             error={errors.course_module?.message}
           />
 
-          <BtnSubmit>Cadastrar</BtnSubmit>
+          <BtnSubmit type="submit">Cadastrar</BtnSubmit>
         </form>
       </StyledDiv>
     </>

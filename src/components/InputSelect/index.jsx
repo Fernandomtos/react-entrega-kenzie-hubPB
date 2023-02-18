@@ -20,3 +20,17 @@ export const InputSelect = ({ label, id, error, register }) => {
     </StyledDiv>
   );
 };
+
+export const InputSelectTech = ({ label, id, error, register }) => {
+  return (
+    <StyledDiv>
+      <label htmlFor={id}>{label}</label>
+      <select {...register(id)}>
+        <option value="Iniciante">Iniciante</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
+      </select>
+      {error ? <p>{error}</p> : null}
+    </StyledDiv>
+  );
+};

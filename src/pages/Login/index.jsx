@@ -1,14 +1,14 @@
 import { FormLogin } from "../../components/FormLogin";
 import { StyledHeader, StyledMainContainer } from "./style";
 
-export const Login = ({ setUser, setLoading }) => {
+export const Login = () => {
   return (
     <>
       <StyledHeader>
         <img src="./img/Logo.svg" alt="Logo da empresa" />
       </StyledHeader>
       <StyledMainContainer>
-        <FormLogin setUser={setUser} setLoading={setLoading} />
+        <FormLogin />
       </StyledMainContainer>
     </>
   );

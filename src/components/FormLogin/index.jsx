@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { BtnSubmit } from "../BtnSubmit";
 import { BtnSignup } from "../BtnSingup";
 import { StyledDiv } from "./style";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./validator";
 import { Input } from "../Input";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+import { useForm } from "react-hook-form";
+import { schema } from "./validator";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-export const FormLogin = ({ setUser, setLoading }) => {
-  const [typePassword, setTypePassword] = useState(true);
+export const FormLogin = () => {
+  const { loginUser, viewPassword, typePassword } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -19,31 +18,6 @@ export const FormLogin = ({ setUser, setLoading }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
-
-  const viewPassword = () => {
-    setTypePassword(!typePassword);
-  };
-
-  const loginUser = async (data) => {
-    try {
-      setLoading(true);
-      const response = await api.post("/sessions", data);
-      setUser(response);
-      window.localStorage.clear();
-      window.localStorage.setItem("@Token", response.data.token);
-      window.localStorage.setItem("@UserId", response.data.user.id);
-      toast.success("Login realizado com sucesso!");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error(error);
-      toast.error(
-        "Login inválido, favor verificar dados cadastrados e tentar novamente!"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <StyledDiv>
@@ -73,7 +47,7 @@ export const FormLogin = ({ setUser, setLoading }) => {
           </button>
         </div>
 
-        <BtnSubmit>Entrar</BtnSubmit>
+        <BtnSubmit type="submit">Entrar</BtnSubmit>
         <span>Ainda não possui uma conta?</span>
         <BtnSignup />
       </form>

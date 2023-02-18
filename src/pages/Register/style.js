@@ -4,6 +4,12 @@ export const StyledDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  @media (min-width: 769px) {
+    nav {
+      width: 370px;
+    }
+  }
 `;
 
 export const StyledMain = styled.main`
